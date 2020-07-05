@@ -3,7 +3,20 @@
 
 ## Directories
 
-List directory contents: `ls`
+Change file or directory permissions(-rwxrwxrwx): `chmod 777 filename `
+
+`0: (000) No permission. `
+`1: (001) Execute permission. `
+`2: (010) Write permission. `
+`3: (011) Write and execute permissions. `
+`4: (100) Read permission. `
+`5: (101) Read and execute permissions. `
+`6: (110) Read and write permissions. `
+`7: (111) Read, write, and execute permissions. `
+
+Create symbolic link: `ln -s originalFile linkFile` 
+
+List directory contents: `ls -l`
 
 List all directory contents: `ll`
 
@@ -29,3 +42,14 @@ Start application: `open -a [name-of-programm]` e.g. `open -a firefox`
 
 Open application `[name-of-programm] .&`
 
+find / -name foo.txt -type f  # -print isn't necessary
+find / -name foo.txt          # don't have to specify "type==file"
+find . -name foo.txt          # search under the current dir
+find . -type f \( -name "*.c" -o -name "*.sh" \)     # *.c and *.sh files
+
+grep word *.c 
+grep word *.c -r (recursive) 
+grep word *.c -i (ignore case)
+
+
+gcc filename -fsanitize=address -Wall -Wextra -Werror -o output
