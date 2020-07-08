@@ -1,16 +1,14 @@
-CC=clang
-# CFLAGS=-fsanitize=signed-integer-overflow -fsanitize=undefined -ggdb3 -O0 -Qunused-arguments -std=c11 -Wall -Werror -Wextra -Wno-sign-compare -Wno-unused-parameter -Wno-unused-variable -Wshadow
-CFLAGS= -ggdb3 -O0 -Qunused-arguments -std=c11 -Wall -Werror -Wextra -Wno-sign-compare -Wno-unused-parameter -Wno-unused-variable -Wshadow
-LDLIBS=-lcrypt -lcs50 -lm
+CC=gcc
+CFLAGS=-std=c11 -ggdb3 -O0 -Wall -Werror -Wextra -Wshadow -fsanitize=signed-integer-overflow -fsanitize=undefined 
 
 all: dictionary.o speller.o
-        $(CC) $(CFLAGS) $(LDLIBS) -o speller speller.o dictionary.o
+        $(CC) $(CFLAGS) -o speller speller.o dictionary.o
 
 dictionary.o: dictionary.h dictionary.c
-                $(CC) $(CFLAGS) $(LDLIBS) dictionary.c -c -o dictionary.o
+                $(CC) $(CFLAGS) dictionary.c -c -o dictionary.o
 
 speller.o: speller.c
-                $(CC) $(CFLAGS) $(LDLIBS) speller.c -c -o speller.o
+                $(CC) $(CFLAGS) speller.c -c -o speller.o
  
 clean:
         rm *.o
